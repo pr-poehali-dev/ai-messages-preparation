@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 
 const HERO_IMAGE = "https://cdn.poehali.dev/projects/62f83fc1-bd8c-4313-987e-e7139c83e482/files/79322d15-b292-4f79-9b1c-d592b1d02531.jpg";
@@ -120,6 +121,7 @@ const colorMap = {
 type Page = "home" | "articles" | "categories";
 
 export default function Index() {
+  const navigate = useNavigate();
   const [page, setPage] = useState<Page>("home");
   const [search, setSearch] = useState("");
   const [activeTag, setActiveTag] = useState<string | null>(null);
@@ -187,6 +189,19 @@ export default function Index() {
               </button>
             ))}
           </div>
+
+          <button
+            onClick={() => navigate("/presentation")}
+            className="hidden md:flex items-center gap-2 px-4 py-2 rounded font-mono-plex text-xs font-medium transition-all duration-200"
+            style={{
+              background: "rgba(168,85,247,0.12)",
+              border: "1px solid rgba(168,85,247,0.35)",
+              color: "#a855f7",
+            }}
+          >
+            <Icon name="Presentation" size={14} />
+            Презентация
+          </button>
 
           <button
             className="md:hidden text-cyan-400 p-2"
